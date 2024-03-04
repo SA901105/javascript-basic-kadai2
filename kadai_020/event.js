@@ -8,7 +8,7 @@ const text = document.getElementById('text');
 btn.addEventListener('click', () => {
 
   //h2要素を新しく作成する
-  const chilText = document.createElement('h2');
+  const childText = document.createElement('h2');
 
   //作成したh2要素に「ボタンをクリックしました」というテキストを追加する
   childText.textContent = 'ボタンをクリックしました';

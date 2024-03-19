@@ -47,6 +47,8 @@ const createText = () => {
 // キー入力の判定
 const keyPress = e => {
 
+  console.log("=== 1 ===");
+
   // 誤タイプの場合
   if(e.key !== untyped.substring(0, 1)) {
     wrap.classList.add('mistyped');
@@ -57,6 +59,8 @@ const keyPress = e => {
     return;
   }
 
+  console.log("=== 2 ===");
+
   // 正タイプの場合
   // スコアのインクリメント
   score++;
@@ -65,22 +69,19 @@ const keyPress = e => {
   typedfield.textContent = typed;
   untypedfield.textContent = untyped;
 
+  console.log("=== 3 ===");
 
 
-  // （課題002）正タイプをした時にコンソールに文字数を表示
+  // （課題001）正タイプをした時にコンソールに文字数を表示
   let letterCount = count2.textContent;
-  count2++;
   count.textContent =
   typed += untyped.substring(0, 1);
   untyped = untyped.substring(1);
   typedfield.textContent = typed;
   untypedfield.textContent = untyped;
 
-  if(e.key === untyped.substring(0,1)) {
+    onkeyup="document.getElementById('count2').innerText=this.value.length"
 
-  console.log(text.length + '文字');
-
-};
 
 
 
@@ -123,7 +124,7 @@ const gameOver = id => {
   }
 };
 
-// カウントダウンタイマー
+  // カウントダウンタイマー
 const timer = () => {
 
   // タイマー部分のHTML要素（p要素）を取得する
@@ -138,15 +139,19 @@ const timer = () => {
     // カウントが0になったらタイマーを停止する
     if(time <= 0) {
 
-      // (001課題)　タイマーが停止したら「タイムアップ！」と表示させる
+      // （課題002）タイマーが止まったら「typed」の範囲（文字表示）を非表示にする
+      document.getElementById("typed").style.display = "none";
+      document.getElementById("typed").style.display = "none";
+
+      // （課題002）タイマーが止まったら「タイムアップ！」と表示させる
       setTimeout(() => {
         untypedfield.textContent = 'タイムアップ！';
-      }, 100);
+      }, 1);
 
-      // タイマーが停止したらアラートを表示させる
+      // タイマーが止まったらアラートを表示させる
       setTimeout(() => {
         gameOver(id);
-      }, 200);
+      }, 100);
     }
   }, 1000);
 };
@@ -166,9 +171,6 @@ start.addEventListener('click', () => {
   // キーボードのイベント処理
   document.addEventListener('keypress', keyPress);
 
-  // （課題002）タイプ数カウントを開始する
-  lettercount();
 });
 
 untypedfield.textContent = 'スタートボタンで開始';
-

@@ -117,9 +117,11 @@ const timer = () => {
     // カウントが0になったらタイマーを停止する
     if(time <= 0) {
 
+      // （課題002）タイマーが止まったら「typed」の範囲（文字表示）を非表示にする
       document.getElementById("typed").style.display = "none";
       document.getElementById("typed").style.display = "none";
 
+       // （課題002）タイマーが止まったら「タイムアップ！」と表示させる
       setTimeout(() => {
         untypedfield.textContent = 'タイムアップ！';
       }, 1);
